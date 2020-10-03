@@ -12,16 +12,21 @@ public class Fibonacci {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("n = ");
+       
         BigInteger n = sc.nextBigInteger();
         System.out.println(""+fib(n).toString());
+        
     }
     
     private static BigInteger fib(BigInteger n){
-        if(n.intValue() <= 2){
-            return new BigInteger("1");
-        }else{
-            return fib(n.subtract(new BigInteger("1"))).add(fib(n.subtract(new BigInteger("2"))));
+        BigInteger f = BigInteger.ONE, f1 = BigInteger.ZERO, f2 = BigInteger.ONE, i = BigInteger.ONE;
+        while (i.compareTo(n) != 1) {
+            f = f1.add(f2);
+            f2 = f1;
+            f1 = f;
+            i = i.add(BigInteger.ONE);
         }
+        return f;
     }
     
 }
